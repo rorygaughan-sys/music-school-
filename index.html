@@ -97,7 +97,7 @@
       const bubble = document.createElement("div"); bubble.className = "bubble"; bubble.textContent = text;
       item.appendChild(bubble); const chat = document.getElementById("chat"); chat.appendChild(item); chat.scrollTop = chat.scrollHeight;
     }
-    function answerQuestion(question) {
+    async function answerQuestion(question) {
       addMessage(question, "user");
       if (!classes.length) { addMessage("The class list is still loading. Please try again in a moment.", "bot"); return; }
       const words = question.toLowerCase().split(/[^a-z0-9]+/).filter(word => word.length > 1 && !stopWords.has(word));
@@ -106,8 +106,24 @@
         return words.length ? words.some(word => details.includes(word)) : false;
       });
       if (!matches.length) { addMessage("I couldn’t find a match. Try an instrument name, a weekday, a teacher, or a room number.", "bot"); return; }
-      const answer = matches.slice(0, 6).map(row => `${row["Class / Group"]} — ${row["Instrument / Subject"]}, ${row["Day"]} at ${row["Evening Time"]}, with ${row["Teacher Name (Draft)"]} in ${row["Classroom Name"]} (Room ${row["Classroom Number"]}).`).join("\n\n");
-      addMessage(answer, "bot");
+      const button = document.querySelector(".ask-row button");
+      button.disabled = true;
+      button.textContent = "Thinking…";
+      try {
+        const response = await fetch("https://belfast-music-school-chat.rorygaughan.workers.dev/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question, classes: matches.slice(0, 8) })
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "The assistant couldn’t answer just now.");
+        addMessage(result.answer, "bot");
+      } catch (error) {
+        addMessage(error.message || "I couldn’t connect to the assistant. Please try again.", "bot");
+      } finally {
+        button.disabled = false;
+        button.innerHTML = "Ask&nbsp; ↗";
+      }
     }
     document.getElementById("askForm").addEventListener("submit", event => { event.preventDefault(); const input = document.getElementById("question"); const text = input.value.trim(); if (text) { answerQuestion(text); input.value = ""; } });
     document.querySelectorAll("[data-question]").forEach(button => button.addEventListener("click", () => answerQuestion(button.dataset.question)));
