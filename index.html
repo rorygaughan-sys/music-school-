@@ -1,0 +1,82 @@
+Great. Copy all the code below and paste it into the editing box. This first version will search the CSV you uploaded and show matching classes. We’ll connect it to ChatGPT after the page is in place.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Music School Class Helper</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 16px; color: #222; }
+    h1 { color: #174ea6; }
+    #chat { border: 1px solid #ccc; border-radius: 10px; padding: 16px; min-height: 260px; margin: 18px 0; }
+    .message { margin: 12px 0; white-space: pre-wrap; }
+    input { box-sizing: border-box; width: 78%; padding: 12px; font-size: 16px; }
+    button { padding: 12px 16px; font-size: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Music School Class Helper</h1>
+  <p>Ask about an instrument, teacher, day, room, or class time.</p>
+
+  <div id="chat">
+    <div class="message">Helper: Try asking “Which classes are on Monday?” or “Tell me about violin.”</div>
+  </div>
+
+  <input id="question" placeholder="Type your question">
+  <button onclick="ask()">Ask</button>
+
+  <script>
+    let classes = [];
+
+    fetch("./music_school_classes_2027_28.csv")
+      .then(response => response.text())
+      .then(text => {
+        const lines = text.replace(/^\uFEFF/, "").trim().split(/\r?\n/);
+        const headers = lines[0].split(",");
+        classes = lines.slice(1).map(line => {
+          const values = line.split(",");
+          return Object.fromEntries(headers.map((header, i) => [header, values[i] || ""]));
+        });
+      })
+      .catch(() => addMessage("Helper: I couldn’t load the class list. Check that the CSV file is in this repository."));
+
+    function addMessage(text) {
+      const message = document.createElement("div");
+      message.className = "message";
+      message.textContent = text;
+      document.getElementById("chat").appendChild(message);
+    }
+
+    function ask() {
+      const box = document.getElementById("question");
+      const question = box.value.trim();
+      if (!question) return;
+
+      addMessage("You: " + question);
+      box.value = "";
+
+      const words = question.toLowerCase().split(/[^a-z0-9]+/).filter(word => word.length > 2);
+      const matches = classes.filter(row => {
+        const details = Object.values(row).join(" ").toLowerCase();
+        return words.some(word => details.includes(word));
+      });
+
+      if (!matches.length) {
+        addMessage("Helper: I couldn’t find a matching class. Try an instrument name, teacher, weekday, or room.");
+        return;
+      }
+
+      const answer = matches.slice(0, 8).map(row =>
+        `${row["Class / Group"]} — ${row["Instrument / Subject"]}, ${row["Day"]} at ${row["Evening Time"]}, with ${row["Teacher Name (Draft)"]} in ${row["Classroom Name"]} (Room ${row["Classroom Number"]}).`
+      ).join("\n");
+
+      addMessage("Helper:\n" + answer);
+    }
+  </script>
+</body>
+</html>
+```
+
+After pasting, click **Commit changes**. Tell me when it’s saved.
