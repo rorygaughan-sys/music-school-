@@ -92,6 +92,15 @@
       if (value.length || row.length) { row.push(value); rows.push(row); }
       return rows;
     }
+    function instrumentPun(question, matches) {
+      const topic = `${question} ${matches.map(row => Object.values(row).join(" ")).join(" ")}`.toLowerCase();
+      if (/piano|keyboard|keys/.test(topic)) return "That’s the key to a great lesson!";
+      if (/violin|viola|cello|string/.test(topic)) return "Sounds like a string of great possibilities!";
+      if (/guitar|ukulele|banjo/.test(topic)) return "Hope you pick a great class!";
+      if (/drum|percussion/.test(topic)) return "Let’s keep the beat going!";
+      if (/flute|clarinet|saxophone|trumpet|trombone|wind/.test(topic)) return "That could be music to your ears!";
+      return "Hope that strikes the right chord!";
+    }
     function addMessage(text, who) {
       const item = document.createElement("div"); item.className = `message ${who}`;
       const bubble = document.createElement("div"); bubble.className = "bubble"; bubble.textContent = text;
@@ -117,7 +126,7 @@
         });
         const result = await response.json();
         if (!response.ok) throw new Error(result.error || "The assistant couldn’t answer just now.");
-        addMessage(result.answer, "bot");
+        addMessage(`${result.answer}\n\n🎵 ${instrumentPun(question, matches)}`, "bot");
       } catch (error) {
         addMessage(error.message || "I couldn’t connect to the assistant. Please try again.", "bot");
       } finally {
