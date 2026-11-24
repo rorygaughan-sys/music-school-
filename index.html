@@ -1,80 +1,116 @@
-
-```html
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Music School Class Helper</title>
+  <meta name="theme-color" content="#152445">
+  <title>Belfast Music School | Class Finder</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 16px; color: #222; }
-    h1 { color: #174ea6; }
-    #chat { border: 1px solid #ccc; border-radius: 10px; padding: 16px; min-height: 260px; margin: 18px 0; }
-    .message { margin: 12px 0; white-space: pre-wrap; }
-    input { box-sizing: border-box; width: 78%; padding: 12px; font-size: 16px; }
-    button { padding: 12px 16px; font-size: 16px; cursor: pointer; }
+    :root{--navy:#152445;--blue:#253e70;--cream:#fbf7ed;--paper:#fffdf8;--coral:#ed735e;--gold:#eab84f;--teal:#4c9b8d;--ink:#1d2940;--muted:#6e7888;--line:#e7e1d4;--shadow:0 24px 60px #14234417}
+    *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .topbar{background:var(--navy);color:white;padding:16px 5vw}.top-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;color:white;text-decoration:none}.brand-mark{width:48px;height:48px;flex:none}.brand-name{font-weight:750;letter-spacing:.01em;line-height:1.08}.brand-name small{display:block;margin-top:5px;color:#f3c96b;font-size:11px;letter-spacing:.19em;text-transform:uppercase}
+    .top-note{font-size:13px;color:#e4e8ef;letter-spacing:.03em}
+    main{max-width:1180px;margin:0 auto;padding:58px 28px 42px}.intro{max-width:700px;margin-bottom:28px}.eyebrow{color:#a45142;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.intro h1{margin:11px 0 10px;font-family:Georgia,serif;font-size:clamp(38px,5vw,58px);line-height:1.05;letter-spacing:-.04em;color:var(--navy)}.intro p{margin:0;color:var(--muted);font-size:17px;line-height:1.65}
+    .layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:30px;align-items:stretch}.chat-card{background:var(--paper);border:1px solid #eee5d5;border-radius:24px;box-shadow:var(--shadow);padding:26px;display:flex;flex-direction:column;min-height:570px}.card-head{display:flex;align-items:center;gap:13px;padding-bottom:18px;border-bottom:1px solid var(--line)}.bot-icon{width:45px;height:45px;border-radius:15px;background:#fff0df;display:grid;place-items:center;font-size:23px}.card-head strong{display:block;color:var(--navy);font-size:16px}.card-head span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.online{margin-left:auto;width:9px;height:9px;background:#52a78b;border-radius:50%;box-shadow:0 0 0 4px #52a78b20}
+    #chat{flex:1;min-height:290px;max-height:390px;overflow:auto;padding:21px 2px}.message{display:flex;margin:0 0 14px}.bubble{max-width:92%;padding:13px 15px;border-radius:16px;font-size:14px;line-height:1.55;white-space:pre-wrap}.bot .bubble{background:#f3f0e8;border-top-left-radius:5px;color:var(--ink)}.user{justify-content:flex-end}.user .bubble{background:var(--blue);color:white;border-top-right-radius:5px}.suggestions{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}.suggestions button{border:1px solid #e7dfcf;background:#fff;color:#48546a;border-radius:999px;padding:8px 12px;font-size:12px;cursor:pointer}.suggestions button:hover{border-color:var(--coral);color:#a45142}
+    .ask-row{display:flex;gap:9px}.ask-row input{min-width:0;flex:1;border:1px solid #ddd7ca;background:#fff;border-radius:12px;padding:14px;font-size:14px;outline:none}.ask-row input:focus{border-color:var(--teal);box-shadow:0 0 0 3px #4c9b8d20}.ask-row button{border:0;background:var(--coral);color:white;font-weight:750;border-radius:12px;padding:0 19px;cursor:pointer}.ask-row button:hover{background:#d65d4a}.small-note{font-size:11px;color:#8a8f98;margin:12px 0 0;line-height:1.5}
+    .photo-column{display:grid;grid-template-rows:1fr 1fr;gap:18px;min-height:570px}.photo-card{position:relative;overflow:hidden;border-radius:24px;min-height:270px;background:#d7cbb6;box-shadow:var(--shadow)}.photo-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.photo-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,#101a32d9)}.photo-copy{position:absolute;z-index:1;left:22px;right:20px;bottom:20px;color:white}.photo-copy span{display:inline-block;background:#f3c96b;color:#2c3040;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.photo-copy h2{margin:10px 0 3px;font-family:Georgia,serif;font-size:25px}.photo-copy p{margin:0;color:#f3f4f7;font-size:13px}
+    footer{max-width:1180px;margin:auto;padding:0 28px 28px;color:#8a8f98;font-size:11px;line-height:1.5}.footer-inner{border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:800px){main{padding-top:38px}.layout{grid-template-columns:1fr}.chat-card{min-height:520px}.photo-column{grid-template-columns:1fr 1fr;grid-template-rows:280px;min-height:0}.photo-card{min-height:280px}.top-note{display:none}}
+    @media(max-width:540px){main{padding:32px 16px}.chat-card{padding:19px;min-height:500px}.photo-column{grid-template-columns:1fr;grid-template-rows:250px 250px}.photo-card{min-height:250px}.intro p{font-size:15px}.ask-row button{padding:0 14px}.footer-inner{display:block}}
   </style>
 </head>
 <body>
-  <h1>Music School Class Helper</h1>
-  <p>Ask about an instrument, teacher, day, room, or class time.</p>
+  <header class="topbar">
+    <div class="top-inner">
+      <a class="brand" href="#" aria-label="Belfast Music School home">
+        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="Belfast Music School logo">
+          <circle cx="32" cy="32" r="31" fill="#ed735e"/>
+          <circle cx="32" cy="32" r="25" fill="none" stroke="#f3c96b" stroke-width="1.5"/>
+          <path d="M38 13v27.5a8 8 0 1 1-5-7.45V21l17-4v20a8 8 0 1 1-5-7.45V13.5z" fill="#fffdf8"/>
+          <circle cx="18" cy="17" r="2" fill="#f3c96b"/><circle cx="47" cy="48" r="2" fill="#f3c96b"/>
+        </svg>
+        <span class="brand-name">Belfast Music School<small>Find your next note</small></span>
+      </a>
+      <div class="top-note">A friendly guide to classes, teachers & times&nbsp; ♫</div>
+    </div>
+  </header>
 
-  <div id="chat">
-    <div class="message">Helper: Try asking “Which classes are on Monday?” or “Tell me about violin.”</div>
-  </div>
+  <main>
+    <section class="intro">
+      <div class="eyebrow">Learn · Play · Belong</div>
+      <h1>Make room for music.</h1>
+      <p>Find a class that fits your rhythm. Ask about instruments, teachers, days, rooms, and evening times.</p>
+    </section>
 
-  <input id="question" placeholder="Type your question">
-  <button onclick="ask()">Ask</button>
+    <section class="layout" aria-label="Class finder and music lessons">
+      <div class="chat-card">
+        <div class="card-head"><div class="bot-icon" aria-hidden="true">♫</div><div><strong>Class Finder</strong><span>Your music school assistant</span></div><i class="online" aria-label="Ready"></i></div>
+        <div id="chat" aria-live="polite"><div class="message bot"><div class="bubble">Hi there! Ask me about an instrument, teacher, weekday, or room. You can try “Who teaches violin?”</div></div></div>
+        <div class="suggestions" aria-label="Example questions">
+          <button type="button" data-question="Who teaches violin?">Violin teacher</button>
+          <button type="button" data-question="Which classes are on Monday?">Monday classes</button>
+          <button type="button" data-question="What time is piano?">Piano time</button>
+        </div>
+        <form class="ask-row" id="askForm"><input id="question" aria-label="Your question" placeholder="Ask about a class…" autocomplete="off"><button type="submit">Ask&nbsp; ↗</button></form>
+        <p class="small-note" id="loadStatus">Loading the class list…</p>
+      </div>
+
+      <aside class="photo-column" aria-label="Students learning music">
+        <article class="photo-card"><img src="https://images.unsplash.com/photo-1769097542113-49f995910fc5?auto=format&fit=crop&w=1200&q=82" alt="Two children learning piano together" loading="lazy"><div class="photo-copy"><span>Every first note counts</span><h2>Find your sound.</h2><p>Small steps, big music.</p></div></article>
+        <article class="photo-card"><img src="https://images.unsplash.com/photo-1758524944186-cf2016869381?auto=format&fit=crop&w=1200&q=82" alt="Two people learning acoustic guitar together" loading="lazy"><div class="photo-copy"><span>Make music together</span><h2>Play your way.</h2><p>There’s a place for every learner.</p></div></article>
+      </aside>
+    </section>
+  </main>
+
+  <footer><div class="footer-inner"><span>© Belfast Music School · Your next note starts here.</span><span>Class times and teacher names are draft planning details.</span></div></footer>
 
   <script>
     let classes = [];
-
+    const stopWords = new Set(["who","what","when","where","which","how","does","do","is","are","the","a","an","me","about","tell","show","find","please","class","classes","teacher","teachers","time","times","on","at","for","in","my"]);
     fetch("./music_school_classes_2027_28.csv")
-      .then(response => response.text())
+      .then(response => { if (!response.ok) throw new Error("CSV not found"); return response.text(); })
       .then(text => {
-        const lines = text.replace(/^\uFEFF/, "").trim().split(/\r?\n/);
-        const headers = lines[0].split(",");
-        classes = lines.slice(1).map(line => {
-          const values = line.split(",");
-          return Object.fromEntries(headers.map((header, i) => [header, values[i] || ""]));
-        });
+        const rows = parseCsv(text.replace(/^\uFEFF/, "").trim());
+        const headers = rows.shift().map(value => value.trim());
+        classes = rows.filter(row => row.some(Boolean)).map(row => Object.fromEntries(headers.map((header, i) => [header, row[i] || ""])));
+        document.getElementById("loadStatus").textContent = `Ready — ${classes.length} classes in the planner.`;
       })
-      .catch(() => addMessage("Helper: I couldn’t load the class list. Check that the CSV file is in this repository."));
+      .catch(() => { document.getElementById("loadStatus").textContent = "I couldn’t load the class list. Check the CSV file is beside index.html in the repository."; });
 
-    function addMessage(text) {
-      const message = document.createElement("div");
-      message.className = "message";
-      message.textContent = text;
-      document.getElementById("chat").appendChild(message);
+    function parseCsv(text) {
+      const rows = []; let row = []; let value = ""; let quoted = false;
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        if (char === '"' && quoted && text[i + 1] === '"') { value += '"'; i++; }
+        else if (char === '"') quoted = !quoted;
+        else if (char === "," && !quoted) { row.push(value); value = ""; }
+        else if ((char === "\n" || char === "\r") && !quoted) { if (char === "\r" && text[i + 1] === "\n") i++; row.push(value); rows.push(row); row = []; value = ""; }
+        else value += char;
+      }
+      if (value.length || row.length) { row.push(value); rows.push(row); }
+      return rows;
     }
-
-    function ask() {
-      const box = document.getElementById("question");
-      const question = box.value.trim();
-      if (!question) return;
-
-      addMessage("You: " + question);
-      box.value = "";
-
-      const words = question.toLowerCase().split(/[^a-z0-9]+/).filter(word => word.length > 2);
+    function addMessage(text, who) {
+      const item = document.createElement("div"); item.className = `message ${who}`;
+      const bubble = document.createElement("div"); bubble.className = "bubble"; bubble.textContent = text;
+      item.appendChild(bubble); const chat = document.getElementById("chat"); chat.appendChild(item); chat.scrollTop = chat.scrollHeight;
+    }
+    function answerQuestion(question) {
+      addMessage(question, "user");
+      if (!classes.length) { addMessage("The class list is still loading. Please try again in a moment.", "bot"); return; }
+      const words = question.toLowerCase().split(/[^a-z0-9]+/).filter(word => word.length > 1 && !stopWords.has(word));
       const matches = classes.filter(row => {
         const details = Object.values(row).join(" ").toLowerCase();
-        return words.some(word => details.includes(word));
+        return words.length ? words.some(word => details.includes(word)) : false;
       });
-
-      if (!matches.length) {
-        addMessage("Helper: I couldn’t find a matching class. Try an instrument name, teacher, weekday, or room.");
-        return;
-      }
-
-      const answer = matches.slice(0, 8).map(row =>
-        `${row["Class / Group"]} — ${row["Instrument / Subject"]}, ${row["Day"]} at ${row["Evening Time"]}, with ${row["Teacher Name (Draft)"]} in ${row["Classroom Name"]} (Room ${row["Classroom Number"]}).`
-      ).join("\n");
-
-      addMessage("Helper:\n" + answer);
+      if (!matches.length) { addMessage("I couldn’t find a match. Try an instrument name, a weekday, a teacher, or a room number.", "bot"); return; }
+      const answer = matches.slice(0, 6).map(row => `${row["Class / Group"]} — ${row["Instrument / Subject"]}, ${row["Day"]} at ${row["Evening Time"]}, with ${row["Teacher Name (Draft)"]} in ${row["Classroom Name"]} (Room ${row["Classroom Number"]}).`).join("\n\n");
+      addMessage(answer, "bot");
     }
+    document.getElementById("askForm").addEventListener("submit", event => { event.preventDefault(); const input = document.getElementById("question"); const text = input.value.trim(); if (text) { answerQuestion(text); input.value = ""; } });
+    document.querySelectorAll("[data-question]").forEach(button => button.addEventListener("click", () => answerQuestion(button.dataset.question)));
   </script>
 </body>
 </html>
-```
-
