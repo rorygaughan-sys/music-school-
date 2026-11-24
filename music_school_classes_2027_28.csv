@@ -1,0 +1,32 @@
+﻿Class / Group,Instrument / Subject,Family,Class size (students),Start date,Day,Lesson (minutes),Level,Teacher Name (Draft),Classroom Name,Capacity,Open seats,Status,Notes,Classroom Number,Evening Time
+Piano Group,Piano,Keyboard,8,2027-09-06,Monday,45,Beginner,Maya Collins,Harmony Studio,10,2,Planning,Illustrative class size; replace with actual enrolment.,101,4:00 PM
+Keyboard Group,Keyboard,Keyboard,7,2027-09-20,Tuesday,45,Beginner,Ethan Flynn,Rhythm Studio,8,1,Planning,Illustrative class size; replace with actual enrolment.,103,4:00 PM
+Organ Group,Organ,Keyboard,5,2027-10-04,Wednesday,45,Beginner,Ava Bennett,Encore Studio,6,1,Planning,Illustrative class size; replace with actual enrolment.,105,4:00 PM
+Violin Group,Violin,Strings,8,2027-10-18,Thursday,45,Beginner,Noah Daly,Harmony Studio,10,2,Planning,Illustrative class size; replace with actual enrolment.,101,4:00 PM
+Viola Group,Viola,Strings,5,2027-11-01,Friday,45,Beginner,Grace Murphy,Rhythm Studio,8,3,Planning,Illustrative class size; replace with actual enrolment.,103,4:00 PM
+Cello Group,Cello,Strings,6,2027-11-15,Monday,45,Beginner,Leo Byrne,Treble Room,8,2,Planning,Illustrative class size; replace with actual enrolment.,106,4:45 PM
+Double Bass Group,Double Bass,Strings,4,2027-12-06,Tuesday,45,Beginner,Sofia Evans,Melody Room,6,2,Planning,Illustrative class size; replace with actual enrolment.,102,4:45 PM
+Harp Group,Harp,Strings,4,2027-12-20,Wednesday,45,Beginner,Oliver Reid,Cadence Room,6,2,Planning,Illustrative class size; replace with actual enrolment.,104,4:45 PM
+Acoustic Guitar Group,Acoustic Guitar,Strings,8,2028-01-03,Thursday,45,Beginner,Maya Collins,Treble Room,10,2,Planning,Illustrative class size; replace with actual enrolment.,106,4:45 PM
+Electric Guitar Group,Electric Guitar,Strings,6,2028-01-17,Friday,45,Beginner,Ethan Flynn,Melody Room,8,2,Planning,Illustrative class size; replace with actual enrolment.,102,4:45 PM
+Bass Guitar Group,Bass Guitar,Strings,5,2028-02-07,Monday,45,Beginner,Ava Bennett,Encore Studio,8,3,Planning,Illustrative class size; replace with actual enrolment.,105,5:30 PM
+Ukulele Group,Ukulele,Strings,8,2028-02-21,Tuesday,45,Beginner,Noah Daly,Harmony Studio,10,2,Planning,Illustrative class size; replace with actual enrolment.,101,5:30 PM
+Flute Group,Flute,Woodwind,6,2028-03-06,Wednesday,45,Beginner,Grace Murphy,Rhythm Studio,8,2,Planning,Illustrative class size; replace with actual enrolment.,103,5:30 PM
+Piccolo Group,Piccolo,Woodwind,4,2028-03-20,Thursday,45,Beginner,Leo Byrne,Encore Studio,6,2,Planning,Illustrative class size; replace with actual enrolment.,105,5:30 PM
+Clarinet Group,Clarinet,Woodwind,6,2028-04-03,Friday,45,Beginner,Sofia Evans,Harmony Studio,8,2,Planning,Illustrative class size; replace with actual enrolment.,101,5:30 PM
+Bass Clarinet Group,Bass Clarinet,Woodwind,4,2028-04-17,Monday,45,Beginner,Oliver Reid,Cadence Room,6,2,Planning,Illustrative class size; replace with actual enrolment.,104,6:15 PM
+Oboe Group,Oboe,Woodwind,5,2028-05-01,Tuesday,45,Beginner,Maya Collins,Treble Room,6,1,Planning,Illustrative class size; replace with actual enrolment.,106,6:15 PM
+Bassoon Group,Bassoon,Woodwind,4,2028-05-15,Wednesday,45,Beginner,Ethan Flynn,Melody Room,6,2,Planning,Illustrative class size; replace with actual enrolment.,102,6:15 PM
+Alto Saxophone Group,Alto Saxophone,Woodwind,7,2027-09-06,Thursday,45,Beginner,Ava Bennett,Cadence Room,8,1,Planning,Illustrative class size; replace with actual enrolment.,104,6:15 PM
+Tenor Saxophone Group,Tenor Saxophone,Woodwind,5,2027-09-20,Friday,45,Beginner,Noah Daly,Treble Room,6,1,Planning,Illustrative class size; replace with actual enrolment.,106,6:15 PM
+Recorder Group,Recorder,Woodwind,6,2027-10-04,Monday,45,Beginner,Grace Murphy,Rhythm Studio,8,2,Planning,Illustrative class size; replace with actual enrolment.,103,7:00 PM
+Trumpet Group,Trumpet,Brass,6,2027-10-18,Tuesday,45,Beginner,Leo Byrne,Encore Studio,8,2,Planning,Illustrative class size; replace with actual enrolment.,105,7:00 PM
+French Horn Group,French Horn,Brass,4,2027-11-01,Wednesday,45,Beginner,Sofia Evans,Harmony Studio,6,2,Planning,Illustrative class size; replace with actual enrolment.,101,7:00 PM
+Trombone Group,Trombone,Brass,6,2027-11-15,Thursday,45,Beginner,Oliver Reid,Rhythm Studio,8,2,Planning,Illustrative class size; replace with actual enrolment.,103,7:00 PM
+Euphonium Group,Euphonium,Brass,4,2027-12-06,Friday,45,Beginner,Maya Collins,Encore Studio,6,2,Planning,Illustrative class size; replace with actual enrolment.,105,7:00 PM
+Tuba Group,Tuba,Brass,4,2027-12-20,Monday,45,Beginner,Ethan Flynn,Melody Room,6,2,Planning,Illustrative class size; replace with actual enrolment.,102,7:45 PM
+Drum Kit Group,Drum Kit,Percussion,8,2028-01-03,Tuesday,45,Beginner,Ava Bennett,Cadence Room,10,2,Planning,Illustrative class size; replace with actual enrolment.,104,7:45 PM
+Orchestral Percussion Group,Orchestral Percussion,Percussion,7,2028-01-17,Wednesday,45,Beginner,Noah Daly,Treble Room,10,3,Planning,Illustrative class size; replace with actual enrolment.,106,7:45 PM
+Hand Percussion Group,Hand Percussion,Percussion,8,2028-02-07,Thursday,45,Beginner,Grace Murphy,Melody Room,10,2,Planning,Illustrative class size; replace with actual enrolment.,102,7:45 PM
+Voice / Singing Group,Voice / Singing,Voice,10,2028-02-21,Friday,45,Beginner,Leo Byrne,Cadence Room,12,2,Planning,Illustrative class size; replace with actual enrolment.,104,7:45 PM
+Music Theory Group,Music Theory,Theory,8,2028-03-06,Monday,45,Beginner,Sofia Evans,Harmony Studio,10,2,Planning,Illustrative class size; replace with actual enrolment.,101,8:30 PM
